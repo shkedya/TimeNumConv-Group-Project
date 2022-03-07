@@ -95,23 +95,6 @@ def add_negative_sign(hex_str, orig_num):
 
 def my_datetime(num_sec):
     """Takes in an integer value that represents the number of seconds since the epoch (January 1st, 1970)"""
-
-    def leap_year(years):
-        """Tests if the month is a leap year or not by using mod, a leap year is every 4 years, if the year is
-         divisible by 100 and not divisible by 400"""
-        if years % 4 == 0 and years % 100 != 0 or years % 400 == 0:
-            return years
-
-    def days_into_months(years, months):
-        """Adds an extra day to account for leap year in February and otherwise returns days"""
-        days_from_months = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        # 12 months and how many days in each month, using 0 as month 0 to offset the range
-        used_day = days_from_months[months]
-        if leap_year(years) and months == 2:
-            return used_day + 1
-        else:
-            return used_day
-
     num_days = num_sec // (24*60*60)
     # uses floor division for the largest value when multiplying 24 hours in a day, 60 minutes in an hour, and 60
     # seconds in 1 hour
@@ -143,3 +126,21 @@ def my_datetime(num_sec):
     month_date_time = used_month + dash + used_day + dash + used_year
     month_date_time = int(month_date_time)
     return month_date_time
+
+
+def leap_year(years):
+    """Tests if the month is a leap year or not by using mod, a leap year is every 4 years, if the year is
+    divisible by 100 and not divisible by 400"""
+    if years % 4 == 0 and years % 100 != 0 or years % 400 == 0:
+        return years
+
+
+def days_into_months(years, months):
+    """Adds an extra day to account for leap year in February and otherwise returns days"""
+    days_from_months = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    # 12 months and how many days in each month, using 0 as month 0 to offset the range
+    used_day = days_from_months[months]
+    if leap_year(years) and months == 2:
+        return used_day + 1
+    else:
+        return used_day
