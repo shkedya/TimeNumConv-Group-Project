@@ -1,6 +1,4 @@
 import unittest
-from task import my_datetime
-
 
 class TestCase(unittest.TestCase):
 
