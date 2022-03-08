@@ -251,7 +251,6 @@ def hexadecimal(num_str):
         length -= 1
 
     return sign * result
-=======
 
 
 def conv_num(num_str):
